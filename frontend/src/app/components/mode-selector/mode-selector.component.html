@@ -1,0 +1,28 @@
+<div class="mode-options" role="group" aria-label="Wybierz źródło lokalizacji">
+  <button
+    type="button"
+    class="mode-button mode-button--gps"
+    [class.mode-button--active]="activeMode === 'gps'"
+    [disabled]="disabled"
+    (click)="modeSelected.emit('gps')"
+  >
+    <span class="mode-icon" aria-hidden="true">◎</span>
+    <span class="mode-copy">
+      <strong>Pobierz moje GPS</strong>
+      <small>Aktualna pozycja</small>
+    </span>
+  </button>
+  <button
+    type="button"
+    class="mode-button mode-button--simulation"
+    [class.mode-button--active]="activeMode === 'simulation'"
+    [disabled]="disabled"
+    (click)="modeSelected.emit('simulation')"
+  >
+    <span class="mode-icon" aria-hidden="true">↗</span>
+    <span class="mode-copy">
+      <strong>Symuluj trasę</strong>
+      <small>Gdańsk – Iława</small>
+    </span>
+  </button>
+</div>

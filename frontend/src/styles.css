@@ -1,0 +1,38 @@
+:root {
+	color-scheme: dark;
+	--page: #151d20;
+	--surface: #1b2529;
+	--line: #354246;
+	--text: #edf2f1;
+	--muted: #91a1a4;
+	font-family: "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	margin: 0;
+	background:
+		radial-gradient(ellipse at 18% 0%, rgb(41 86 76 / 28%), transparent 34rem),
+		linear-gradient(145deg, #182326 0%, var(--page) 48%, #192126 100%);
+	color: var(--text);
+}
+
+button,
+input {
+	font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+	outline: 2px solid #a4e0c8;
+	outline-offset: 3px;
+}

@@ -1,0 +1,29 @@
+<main class="page-shell">
+  <section class="travel-app" aria-label="TransitTales - przewodnik podróżny">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <div>
+          <p class="eyebrow">PRZEWODNIK PODRÓŻNY</p>
+          <h1>TransitTales</h1>
+        </div>
+      </div>
+      <span [class]="statusClass()" aria-live="polite">{{ statusText() }}</span>
+    </header>
+
+    <p class="intro">Wybierz lokalizację GPS albo przetestuj aplikację na trasie kolejowej.</p>
+
+    <app-mode-selector
+      [activeMode]="activeMode()"
+      [disabled]="isLoading()"
+      (modeSelected)="onModeSelected($event)"
+    />
+
+    <app-voice-toggle
+      [enabled]="voiceEnabled()"
+      (enabledChange)="onVoiceChanged($event)"
+    />
+
+    <app-story-panel [state]="storyState()" />
+  </section>
+</main>

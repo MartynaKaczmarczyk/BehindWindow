@@ -1,0 +1,55 @@
+.voice-toggle {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 9px;
+  margin: 17px 0 20px;
+  color: #c6d0d2;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.voice-toggle input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.toggle-track {
+  display: flex;
+  width: 34px;
+  height: 19px;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid #526064;
+  border-radius: 999px;
+  background: #293438;
+  transition: background 140ms ease;
+}
+
+.toggle-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #b4c0c2;
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.voice-toggle input:checked + .toggle-track {
+  border-color: #47816f;
+  background: #235d4c;
+}
+
+.voice-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(15px);
+  background: #d3f0e2;
+}
+
+.voice-toggle input:focus-visible + .toggle-track {
+  outline: 2px solid #a4e0c8;
+  outline-offset: 3px;
+}

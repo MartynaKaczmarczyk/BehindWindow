@@ -1,0 +1,76 @@
+.mode-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mode-button {
+  display: flex;
+  min-width: 0;
+  min-height: 70px;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #202a2d;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.mode-button:hover:not(:disabled),
+.mode-button--active {
+  border-color: #568e7f;
+  background: #1a302d;
+}
+
+.mode-button--simulation:hover:not(:disabled),
+.mode-button--simulation.mode-button--active {
+  border-color: #587d9b;
+  background: #202f3b;
+}
+
+.mode-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.mode-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 7px;
+  background: #153a35;
+  color: #a4e0c8;
+  font-size: 20px;
+}
+
+.mode-button--simulation .mode-icon {
+  background: #1c3447;
+  color: #b6d8f1;
+}
+
+.mode-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.mode-copy strong {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.mode-copy small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+@media (max-width: 360px) {
+  .mode-options {
+    grid-template-columns: 1fr;
+  }
+}

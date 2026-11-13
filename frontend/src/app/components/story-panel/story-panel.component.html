@@ -1,0 +1,38 @@
+@switch (state.kind) {
+  @case ('idle') {
+    <div class="empty-state" aria-live="polite">
+      <span class="empty-mark" aria-hidden="true">✦</span>
+      <p>Wybierz lokalizację, aby rozpocząć podróż.</p>
+    </div>
+  }
+  @case ('loading') {
+    <div class="loading-state" role="status" aria-live="polite">
+      <span class="loading-mark" aria-hidden="true"></span>
+      <span>{{ state.message }}</span>
+    </div>
+  }
+  @case ('error') {
+    <div class="error-state" role="alert">{{ state.message }}</div>
+  }
+  @case ('story') {
+    <article class="story-card" aria-live="polite">
+      <div class="story-kicker">
+        <span class="location-mark" aria-hidden="true">⌖</span>
+        <span>{{ state.label }}</span>
+      </div>
+      <h2>{{ state.data.town }}</h2>
+      <p class="story-text">{{ state.data.aiStory }}</p>
+      @if (state.data.featuredPlace; as place) {
+        <a class="featured-place" [href]="place.url" target="_blank" rel="noopener noreferrer">
+          @if (place.imageUrl) {
+            <img [src]="place.imageUrl" [alt]="'Zdjęcie miejsca: ' + place.title" loading="lazy" />
+          } @else {
+            <span class="featured-place-placeholder">Zdjęcie niedostępne</span>
+          }
+          <span class="featured-place-caption">Miejsce z opowieści: {{ place.title }}</span>
+        </a>
+      }
+    </article>
+    <app-place-list [places]="state.data.results" />
+  }
+}
