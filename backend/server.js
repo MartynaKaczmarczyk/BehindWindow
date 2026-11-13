@@ -9,6 +9,7 @@ const frontendPath = path.join(__dirname, '../frontend/dist/transit-tales/browse
 
 app.use(express.json());
 app.use('/api/explore', require('./api/explore'));
+app.use('/api/stories', require('./api/stories'));
 app.use(express.static(frontendPath));
 
 app.get('*', (req, res, next) => {

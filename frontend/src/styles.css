@@ -1,19 +1,26 @@
 :root {
 	color-scheme: light;
-	--page: #786747;
-	--surface: #e8d9b4;
-	--paper-light: #f0e5c7;
-	--paper-shadow: #c6b184;
-	--line: #b29a68;
-	--text: #352e22;
-	--muted: #77694f;
-	--forest: #355845;
-	--forest-dark: #274434;
-	--forest-paper: #dce5ca;
-	--river: #526e78;
-	--river-paper: #d9e3df;
-	--rust: #9c5037;
-	--rust-paper: #ecd7bf;
+	--bleached-sand: #d5c49a;
+	--papyrus-map: #cdb98c;
+	--saddle-up: #87563b;
+	--noble-crown: #9c8351;
+	--coffee-liqueur: #49372b;
+	--arizona-white: #f1e6ca;
+	--wetlands-swamp: #566047;
+	--page: var(--saddle-up);
+	--surface: var(--papyrus-map);
+	--paper-light: var(--arizona-white);
+	--paper-shadow: var(--bleached-sand);
+	--line: var(--noble-crown);
+	--text: var(--coffee-liqueur);
+	--muted: var(--saddle-up);
+	--forest: var(--wetlands-swamp);
+	--forest-dark: color-mix(in srgb, var(--wetlands-swamp) 70%, var(--coffee-liqueur));
+	--forest-paper: color-mix(in srgb, var(--wetlands-swamp) 15%, var(--arizona-white));
+	--river: color-mix(in srgb, var(--wetlands-swamp) 80%, var(--arizona-white));
+	--river-paper: color-mix(in srgb, var(--wetlands-swamp) 12%, var(--arizona-white));
+	--rust: var(--saddle-up);
+	--rust-paper: color-mix(in srgb, var(--saddle-up) 18%, var(--arizona-white));
 	font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -30,9 +37,9 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	background:
-		radial-gradient(ellipse at center, rgb(222 206 168 / 14%) 5%, transparent 45%),
-		repeating-linear-gradient(0deg, rgb(50 39 22 / 5%) 0 1px, transparent 1px 5px),
-		linear-gradient(145deg, #8b7854 0%, var(--page) 54%, #594b35 100%);
+		radial-gradient(ellipse at center, color-mix(in srgb, var(--arizona-white) 14%, transparent) 5%, transparent 45%),
+		repeating-linear-gradient(0deg, color-mix(in srgb, var(--coffee-liqueur) 10%, transparent) 0 1px, transparent 1px 5px),
+		linear-gradient(145deg, var(--noble-crown) 0%, var(--page) 54%, var(--coffee-liqueur) 100%);
 	color: var(--text);
 }
 
@@ -48,6 +55,6 @@ a:focus-visible {
 }
 
 ::selection {
-	background: #9e6d42;
-	color: #fff4d8;
+	background: var(--saddle-up);
+	color: var(--arizona-white);
 }

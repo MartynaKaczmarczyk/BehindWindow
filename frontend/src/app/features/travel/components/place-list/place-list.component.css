@@ -19,14 +19,14 @@ h3 {
   align-items: center;
   gap: 12px;
   padding: 8px 10px;
-  border-bottom: 1px solid #c0aa78;
-  color: #3e503f;
+  border-bottom: 1px solid var(--noble-crown);
+  color: var(--forest-dark);
   font-size: 12px;
   text-decoration: none;
 }
 
 .place-link:hover {
-  background: rgb(220 229 202 / 65%);
+  background: color-mix(in srgb, var(--forest-paper) 65%, transparent);
   color: var(--forest-dark);
 }
 
@@ -39,15 +39,15 @@ h3 {
 }
 
 .place-image {
-  border: 1px solid #a58c5b;
-  background: #d5c49a;
+  border: 1px solid var(--noble-crown);
+  background: var(--bleached-sand);
   object-fit: cover;
 }
 
 .place-image-placeholder {
   display: grid;
   place-items: center;
-  background: #d5c49a;
+  background: var(--bleached-sand);
   color: var(--forest);
   font-size: 22px;
 }
@@ -68,6 +68,6 @@ h3 {
 
 .place-distance {
   flex: 0 0 auto;
-  color: #77694f;
+  color: var(--saddle-up);
   white-space: nowrap;
 }

@@ -13,7 +13,7 @@
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgb(239 226 190 / 75%);
+  background: color-mix(in srgb, var(--arizona-white) 75%, transparent);
   color: var(--text);
   text-align: left;
   cursor: pointer;
@@ -22,7 +22,7 @@
 
 .mode-button:hover:not(:disabled),
 .mode-button--active {
-  border-color: var(--forest);
+  border-color: var(--wetlands-swamp);
   background: var(--forest-paper);
 }
 
@@ -48,14 +48,14 @@
   flex: 0 0 30px;
   place-items: center;
   border-radius: 2px;
-  background: var(--forest);
-  color: var(--paper-light);
+  background: var(--wetlands-swamp);
+  color: var(--arizona-white);
   font-size: 20px;
 }
 
 .mode-button--simulation .mode-icon {
   background: var(--river);
-  color: #f0e7cf;
+  color: var(--arizona-white);
 }
 
 .mode-copy {
@@ -69,7 +69,7 @@
 }
 
 .mode-copy small {
-  color: #77694f;
+  color: var(--saddle-up);
   font-size: 10px;
 }
 

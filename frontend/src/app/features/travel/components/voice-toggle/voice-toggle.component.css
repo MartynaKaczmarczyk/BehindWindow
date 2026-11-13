@@ -4,7 +4,7 @@
   align-items: center;
   gap: 9px;
   margin: 17px 0 20px;
-  color: var(--muted);
+  color: var(--coffee-liqueur);
   font-size: 12px;
   cursor: pointer;
 }
@@ -25,9 +25,9 @@
   height: 19px;
   align-items: center;
   padding: 2px;
-  border: 1px solid #9a8456;
+  border: 1px solid var(--noble-crown);
   border-radius: 999px;
-  background: #d3c298;
+  background: var(--bleached-sand);
   transition: background 140ms ease;
 }
 
@@ -35,18 +35,18 @@
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #76694f;
+  background: var(--saddle-up);
   transition: transform 140ms ease, background 140ms ease;
 }
 
 .voice-toggle input:checked + .toggle-track {
   border-color: var(--forest);
-  background: #779174;
+  background: color-mix(in srgb, var(--wetlands-swamp) 65%, var(--bleached-sand));
 }
 
 .voice-toggle input:checked + .toggle-track .toggle-thumb {
   transform: translateX(15px);
-  background: #f4e9cb;
+  background: var(--arizona-white);
 }
 
 .voice-toggle input:focus-visible + .toggle-track {

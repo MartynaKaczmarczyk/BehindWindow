@@ -8,22 +8,24 @@
           <h1>TransitTales</h1>
         </div>
       </div>
-      <span [class]="statusClass()" aria-live="polite">{{ statusText() }}</span>
+      <span [class]="travelSession.statusClass()" aria-live="polite">{{ travelSession.statusText() }}</span>
     </header>
 
     <p class="intro">Wybierz lokalizację GPS albo przetestuj aplikację na trasie kolejowej.</p>
 
     <app-mode-selector
-      [activeMode]="activeMode()"
-      [disabled]="isLoading()"
-      (modeSelected)="onModeSelected($event)"
+      [activeMode]="travelSession.activeMode()"
+      [disabled]="travelSession.isLoading()"
+      (modeSelected)="travelSession.selectMode($event)"
     />
 
     <app-voice-toggle
-      [enabled]="voiceEnabled()"
-      (enabledChange)="onVoiceChanged($event)"
+      [enabled]="travelSession.voiceEnabled()"
+      (enabledChange)="travelSession.setVoiceEnabled($event)"
     />
 
-    <app-story-panel [state]="storyState()" />
+    <app-music-player />
+
+    <app-story-panel [state]="travelSession.storyState()" />
   </section>
 </main>

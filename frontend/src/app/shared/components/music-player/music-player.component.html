@@ -1,0 +1,31 @@
+<section class="music-player" aria-label="Muzyka w tle">
+  <div class="music-row">
+    <span class="music-mark" aria-hidden="true">♫</span>
+    <div class="music-copy">
+      <strong>Muzyka w tle</strong>
+      <span>YouTube · start od 6:29</span>
+    </div>
+    <button
+      type="button"
+      class="music-toggle"
+      [attr.aria-pressed]="isPlaying()"
+      [attr.aria-label]="isPlaying() ? 'Zatrzymaj muzykę' : 'Odtwórz muzykę w tle'"
+      (click)="togglePlayback()"
+    >
+      <span aria-hidden="true">{{ isPlaying() ? '■' : '▶' }}</span>
+      <span>{{ isPlaying() ? 'Zatrzymaj' : 'Odtwórz' }}</span>
+    </button>
+  </div>
+
+  @if (isPlaying()) {
+    <div class="music-frame">
+      <iframe
+        [src]="playerUrl"
+        title="Muzyka w tle z YouTube"
+        allow="autoplay; encrypted-media; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  }
+</section>
