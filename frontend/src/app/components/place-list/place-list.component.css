@@ -19,15 +19,15 @@ h3 {
   align-items: center;
   gap: 12px;
   padding: 8px 10px;
-  border-bottom: 1px solid var(--line);
-  color: #b8dfd2;
+  border-bottom: 1px solid #c0aa78;
+  color: #3e503f;
   font-size: 12px;
   text-decoration: none;
 }
 
 .place-link:hover {
-  background: #222e31;
-  color: #d8f5e9;
+  background: rgb(220 229 202 / 65%);
+  color: var(--forest-dark);
 }
 
 .place-image,
@@ -39,15 +39,16 @@ h3 {
 }
 
 .place-image {
-  background: #293438;
+  border: 1px solid #a58c5b;
+  background: #d5c49a;
   object-fit: cover;
 }
 
 .place-image-placeholder {
   display: grid;
   place-items: center;
-  background: #293438;
-  color: #a4e0c8;
+  background: #d5c49a;
+  color: var(--forest);
   font-size: 22px;
 }
 
@@ -67,6 +68,6 @@ h3 {
 
 .place-distance {
   flex: 0 0 auto;
-  color: var(--muted);
+  color: #77694f;
   white-space: nowrap;
 }

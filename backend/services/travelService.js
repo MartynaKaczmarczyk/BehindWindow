@@ -1,9 +1,12 @@
 const fetch = require('node-fetch');
+const { AI_PROMPTS } = require('../outside-resources');
+
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const DEFAULT_PROMPT_TEMPLATE = 'Jesteś przewodnikiem podróżnym. Miejscowość: {{townName}}. {{context}} Opowiedz po polsku w 3-4 krótkich zdaniach ciekawostkę, bez powitań.';
 const recentStoriesByTown = new Map();
 const MAX_RECENT_STORIES = 5;
+
 
 async function getLocationName(lat, lon) {
     try {
@@ -17,6 +20,8 @@ async function getLocationName(lat, lon) {
     }
 }
 
+//function buildPrompt
+
 async function generateTravelStory(townName, featuredPlace) {
     if (!GROQ_API_KEY) return `Mijasz miejscowość: ${townName}.`;
         const context = featuredPlace
@@ -27,11 +32,14 @@ async function generateTravelStory(townName, featuredPlace) {
         const previousStoriesInstruction = previousStories.length > 0
             ? `Nie powtarzaj tych wcześniejszych opowieści ani wykorzystanych w nich ciekawostek:\n${previousStories.map(story => `- ${story}`).join('\n')}`
             : 'Wybierz konkretną, mało oczywistą ciekawostkę i nie używaj oklepanych faktów.';
-        const prompt = `${promptTemplate
-            .replaceAll('{{townName}}', townName)
-            .replaceAll('{{context}}', context)
-            .replaceAll('{{previousStories}}', previousStoriesInstruction)}\n\n${previousStoriesInstruction}\nZa każdym razem napisz inną opowieść.`;
-            
+        
+        const prompt = AI_PROMPTS.guideTrivia(
+            townName,
+            context,
+            'https://pl.wikipedia.org/wiki/' + townName,
+            'https://pl.wikipedia.org/wiki/' + featuredPlace.title
+        );
+
     try {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',

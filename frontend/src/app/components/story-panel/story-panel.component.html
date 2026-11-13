@@ -24,11 +24,15 @@
       <p class="story-text">{{ state.data.aiStory }}</p>
       @if (state.data.featuredPlace; as place) {
         <a class="featured-place" [href]="place.url" target="_blank" rel="noopener noreferrer">
-          @if (place.imageUrl) {
-            <img [src]="place.imageUrl" [alt]="'Zdjęcie miejsca: ' + place.title" loading="lazy" />
-          } @else {
-            <span class="featured-place-placeholder">Zdjęcie niedostępne</span>
-          }
+          <span class="featured-place-frame">
+            @if (place.imageUrl) {
+              <span class="featured-place-photo">
+                <img [src]="place.imageUrl" [alt]="'Zdjęcie miejsca: ' + place.title" loading="lazy" />
+              </span>
+            } @else {
+              <span class="featured-place-placeholder">Zdjęcie niedostępne</span>
+            }
+          </span>
           <span class="featured-place-caption">Miejsce z opowieści: {{ place.title }}</span>
         </a>
       }

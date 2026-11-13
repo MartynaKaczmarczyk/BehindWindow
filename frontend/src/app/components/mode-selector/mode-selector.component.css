@@ -12,24 +12,28 @@
   gap: 11px;
   padding: 12px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #202a2d;
+  border-radius: 3px;
+  background: rgb(239 226 190 / 75%);
   color: var(--text);
   text-align: left;
   cursor: pointer;
-  transition: border-color 140ms ease, background 140ms ease;
+  transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease;
 }
 
 .mode-button:hover:not(:disabled),
 .mode-button--active {
-  border-color: #568e7f;
-  background: #1a302d;
+  border-color: var(--forest);
+  background: var(--forest-paper);
 }
 
 .mode-button--simulation:hover:not(:disabled),
 .mode-button--simulation.mode-button--active {
-  border-color: #587d9b;
-  background: #202f3b;
+  border-color: var(--river);
+  background: var(--river-paper);
+}
+
+.mode-button:hover:not(:disabled) {
+  transform: translateY(-1px) rotate(-0.2deg);
 }
 
 .mode-button:disabled {
@@ -43,15 +47,15 @@
   height: 30px;
   flex: 0 0 30px;
   place-items: center;
-  border-radius: 7px;
-  background: #153a35;
-  color: #a4e0c8;
+  border-radius: 2px;
+  background: var(--forest);
+  color: var(--paper-light);
   font-size: 20px;
 }
 
 .mode-button--simulation .mode-icon {
-  background: #1c3447;
-  color: #b6d8f1;
+  background: var(--river);
+  color: #f0e7cf;
 }
 
 .mode-copy {
@@ -65,7 +69,7 @@
 }
 
 .mode-copy small {
-  color: var(--muted);
+  color: #77694f;
   font-size: 10px;
 }
 

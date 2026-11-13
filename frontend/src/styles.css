@@ -1,11 +1,20 @@
 :root {
-	color-scheme: dark;
-	--page: #151d20;
-	--surface: #1b2529;
-	--line: #354246;
-	--text: #edf2f1;
-	--muted: #91a1a4;
-	font-family: "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif;
+	color-scheme: light;
+	--page: #786747;
+	--surface: #e8d9b4;
+	--paper-light: #f0e5c7;
+	--paper-shadow: #c6b184;
+	--line: #b29a68;
+	--text: #352e22;
+	--muted: #77694f;
+	--forest: #355845;
+	--forest-dark: #274434;
+	--forest-paper: #dce5ca;
+	--river: #526e78;
+	--river-paper: #d9e3df;
+	--rust: #9c5037;
+	--rust-paper: #ecd7bf;
+	font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -21,8 +30,9 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	background:
-		radial-gradient(ellipse at 18% 0%, rgb(41 86 76 / 28%), transparent 34rem),
-		linear-gradient(145deg, #182326 0%, var(--page) 48%, #192126 100%);
+		radial-gradient(ellipse at center, rgb(222 206 168 / 14%) 5%, transparent 45%),
+		repeating-linear-gradient(0deg, rgb(50 39 22 / 5%) 0 1px, transparent 1px 5px),
+		linear-gradient(145deg, #8b7854 0%, var(--page) 54%, #594b35 100%);
 	color: var(--text);
 }
 
@@ -33,6 +43,11 @@ input {
 
 button:focus-visible,
 a:focus-visible {
-	outline: 2px solid #a4e0c8;
+	outline: 2px solid var(--rust);
 	outline-offset: 3px;
+}
+
+::selection {
+	background: #9e6d42;
+	color: #fff4d8;
 }

@@ -4,19 +4,45 @@
 }
 
 .page-shell {
+  position: relative;
   display: grid;
   min-height: 100vh;
   place-items: center;
   padding: 32px 18px;
 }
 
+.page-shell::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  background: repeating-radial-gradient(
+    ellipse at 82% 70%,
+    transparent 0 28px,
+    rgb(238 222 184 / 11%) 29px 30px,
+    transparent 31px 53px
+  );
+  content: "";
+  pointer-events: none;
+}
+
 .travel-app {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
   width: min(100%, 520px);
   padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface);
-  box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
+  border: 1px solid #8f774b;
+  border-radius: 4px;
+  background:
+    linear-gradient(32deg, transparent 48.8%, rgb(119 91 47 / 10%) 49%, transparent 49.4%),
+    linear-gradient(148deg, transparent 68.6%, rgb(255 248 218 / 23%) 68.9%, transparent 69.4%),
+    radial-gradient(ellipse at 3% 4%, rgb(109 72 35 / 22%), transparent 22%),
+    radial-gradient(ellipse at 97% 96%, rgb(109 72 35 / 19%), transparent 24%),
+    var(--surface);
+  box-shadow:
+    inset 0 0 28px rgb(112 77 36 / 22%),
+    0 24px 60px rgb(37 28 17 / 38%);
+  animation: map-unfold 760ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .app-header,
@@ -28,6 +54,7 @@
 .app-header {
   justify-content: space-between;
   gap: 16px;
+  animation: detail-appear 480ms 120ms ease-out both;
 }
 
 .brand {
@@ -39,17 +66,18 @@
   width: 42px;
   aspect-ratio: 1;
   place-items: center;
-  border: 1px solid #34786c;
-  border-radius: 10px;
-  background: #153a35;
-  color: #a4e0c8;
+  border: 1px solid var(--forest);
+  border-radius: 3px;
+  background: var(--forest);
+  box-shadow: inset 0 0 0 3px rgb(240 229 199 / 15%);
+  color: var(--paper-light);
   font-size: 13px;
   font-weight: 800;
 }
 
 .eyebrow {
   margin: 0 0 3px;
-  color: var(--muted);
+  color: #766344;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -65,22 +93,23 @@ h1 {
 .status {
   padding: 6px 9px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  color: #c3ced1;
+  border-radius: 2px;
+  background: rgb(244 232 202 / 62%);
+  color: var(--muted);
   font-size: 11px;
   white-space: nowrap;
 }
 
 .status--gps {
-  border-color: #34786c;
-  background: #153a35;
-  color: #a4e0c8;
+  border-color: var(--forest);
+  background: var(--forest-paper);
+  color: var(--forest-dark);
 }
 
 .status--simulation {
-  border-color: #456b8a;
-  background: #1c3447;
-  color: #b6d8f1;
+  border-color: var(--river);
+  background: var(--river-paper);
+  color: #344d55;
 }
 
 .intro {
@@ -88,6 +117,50 @@ h1 {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.6;
+  animation: detail-appear 480ms 190ms ease-out both;
+}
+
+app-mode-selector,
+app-voice-toggle,
+app-story-panel {
+  display: block;
+  animation: detail-appear 480ms ease-out both;
+}
+
+app-mode-selector {
+  animation-delay: 260ms;
+}
+
+app-voice-toggle {
+  animation-delay: 330ms;
+}
+
+app-story-panel {
+  animation-delay: 400ms;
+}
+
+@keyframes map-unfold {
+  from {
+    opacity: 0;
+    transform: translateY(18px) perspective(900px) rotateX(2deg) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) perspective(900px) rotateX(0) scale(1);
+  }
+}
+
+@keyframes detail-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 420px) {
@@ -97,5 +170,16 @@ h1 {
 
   .status {
     font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
