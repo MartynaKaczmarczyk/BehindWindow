@@ -1,0 +1,19 @@
+:host { display: block; margin-top: 16px; }
+
+.save-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+.save-button {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--wetlands-swamp);
+  border-radius: 2px;
+  background: var(--wetlands-swamp);
+  color: var(--arizona-white);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.save-button:hover:not(:disabled) { background: var(--forest-dark); }
+.save-button:disabled { cursor: wait; opacity: 0.65; }
+.save-message { color: var(--forest-dark); font-size: 12px; }

@@ -1,0 +1,8 @@
+<div class="save-actions">
+  <button type="button" class="save-button" [disabled]="saving" (click)="saveRequested.emit()">
+    {{ saving ? 'Zapisuję…' : 'Zapisz opowieść' }}
+  </button>
+  @if (message) {
+    <span class="save-message" role="status">{{ message }}</span>
+  }
+</div>

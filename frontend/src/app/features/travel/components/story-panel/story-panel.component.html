@@ -36,6 +36,11 @@
           <span class="featured-place-caption">Miejsce z opowieści: {{ place.title }}</span>
         </a>
       }
+      <app-save-story-button
+        [saving]="saving"
+        [message]="saveMessage"
+        (saveRequested)="saveRequested.emit(state.data)"
+      />
     </article>
     <app-place-list [places]="state.data.results" />
   }

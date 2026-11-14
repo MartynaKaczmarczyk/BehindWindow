@@ -1,31 +1,14 @@
-<main class="page-shell">
-  <section class="travel-app" aria-label="TransitTales - przewodnik podróżny">
-    <header class="app-header">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">TT</span>
-        <div>
-          <p class="eyebrow">PRZEWODNIK PODRÓŻNY</p>
-          <h1>TransitTales</h1>
-        </div>
-      </div>
-      <span [class]="travelSession.statusClass()" aria-live="polite">{{ travelSession.statusText() }}</span>
-    </header>
+<div class="app-shell">
+  <header class="site-header">
+    <a class="site-brand" routerLink="/" aria-label="TransitTales, strona główna">
+      <span class="brand-mark" aria-hidden="true">TT</span>
+      <span>TransitTales</span>
+    </a>
+    <nav aria-label="Nawigacja główna">
+      <a routerLink="/" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{ exact: true }">Podróż</a>
+      <a routerLink="/saved" routerLinkActive="nav-link--active">Zapisane opowieści</a>
+    </nav>
+  </header>
 
-    <p class="intro">Wybierz lokalizację GPS albo przetestuj aplikację na trasie kolejowej.</p>
-
-    <app-mode-selector
-      [activeMode]="travelSession.activeMode()"
-      [disabled]="travelSession.isLoading()"
-      (modeSelected)="travelSession.selectMode($event)"
-    />
-
-    <app-voice-toggle
-      [enabled]="travelSession.voiceEnabled()"
-      (enabledChange)="travelSession.setVoiceEnabled($event)"
-    />
-
-    <app-music-player />
-
-    <app-story-panel [state]="travelSession.storyState()" />
-  </section>
-</main>
+  <router-outlet />
+</div>

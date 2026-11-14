@@ -1,0 +1,74 @@
+<main class="page-shell">
+  <section class="saved-page" aria-labelledby="saved-title">
+    <header class="saved-header">
+      <div>
+        <p class="eyebrow">ARCHIWUM PODRÓŻY</p>
+        <h1 id="saved-title">Zapisane opowieści</h1>
+      </div>
+      <button type="button" class="refresh-button" [disabled]="isLoading()" (click)="loadStories()">
+        Odśwież
+      </button>
+    </header>
+
+    @if (errorMessage()) {
+      <p class="feedback feedback--error" role="alert">{{ errorMessage() }}</p>
+    }
+
+    @if (isLoading()) {
+      <p class="list-state" role="status">Wczytuję zapisane opowieści…</p>
+    } @else if (stories().length === 0) {
+      <div class="list-state list-state--empty">
+        <span aria-hidden="true">✦</span>
+        <p>Nie ma jeszcze zapisanych opowieści.</p>
+      </div>
+    } @else {
+      <div class="story-list">
+        @for (story of stories(); track story.id) {
+          <article class="saved-story">
+            @if (story.featuredPlace?.imageUrl; as imageUrl) {
+              <img class="saved-image" [src]="imageUrl" [alt]="'Zdjęcie miejsca: ' + story.featuredPlace?.title" loading="lazy" />
+            }
+
+            <div class="saved-story-content">
+              <div class="saved-story-meta">
+                <span>{{ story.town }}</span>
+                <time [attr.datetime]="story.createdAt">{{ story.createdAt | date: 'dd.MM.yyyy, HH:mm' }}</time>
+              </div>
+
+              @if (editingId() === story.id) {
+                <form class="edit-form" (ngSubmit)="saveChanges(story.id)">
+                  <label>
+                    Nazwa
+                    <input name="name" [(ngModel)]="editName" maxlength="160" required />
+                  </label>
+                  <label>
+                    Treść opowieści
+                    <textarea name="aiStory" [(ngModel)]="editAiStory" rows="5" required></textarea>
+                  </label>
+                  <div class="story-actions">
+                    <button type="submit" class="primary-button" [disabled]="updatingId() === story.id">
+                      {{ updatingId() === story.id ? 'Zapisuję…' : 'Zapisz zmiany' }}
+                    </button>
+                    <button type="button" class="text-button" (click)="cancelEditing()">Anuluj</button>
+                  </div>
+                </form>
+              } @else {
+                <h2>{{ story.name }}</h2>
+                <p class="saved-story-text">{{ story.aiStory }}</p>
+                @if (story.featuredPlace) {
+                  <a class="featured-link" [href]="story.featuredPlace.url" target="_blank" rel="noopener noreferrer">
+                    Miejsce z opowieści: {{ story.featuredPlace.title }}
+                  </a>
+                }
+                <div class="story-actions">
+                  <button type="button" class="text-button" (click)="startEditing(story)">Edytuj</button>
+                  <button type="button" class="delete-button" (click)="deleteStory(story.id)">Usuń</button>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </section>
+</main>

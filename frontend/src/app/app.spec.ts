@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
+import { routes } from './app.routes';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideHttpClient()],
+      providers: [provideHttpClient(), provideRouter(routes)],
     }).compileComponents();
   });
 
@@ -16,11 +18,11 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render the mode selector', () => {
+  it('should render links to travel and saved stories', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('TransitTales');
-    expect(compiled.querySelector('app-mode-selector')).not.toBeNull();
+    expect(compiled.querySelector('a[routerLink="/"]')?.textContent).toContain('TransitTales');
+    expect(compiled.querySelector('a[routerLink="/saved"]')?.textContent).toContain('Zapisane opowieści');
   });
 });
